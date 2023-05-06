@@ -15,7 +15,7 @@ import java.util.UUID;
 @AllArgsConstructor
 //recordda kullanılır ama setter da sıkıntı çıkıyor
 public class CreateCarRequest {
-    @NotBlank //boşluk bırakırsa kabul etmemesi için
+    //@NotBlank //boşluk bırakırsa kabul etmemesi için
     @NotNull
     private UUID modelId;
     @Min(value = 2000)
@@ -24,9 +24,7 @@ public class CreateCarRequest {
     @NotNull
     @NotBlank
     private String plate;
-    @NotNull
-    @NotBlank
-    private State state;
+
     @Min(value = 1)
     private double dailyPrice;
 }

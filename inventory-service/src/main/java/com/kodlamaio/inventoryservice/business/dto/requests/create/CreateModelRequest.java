@@ -14,7 +14,7 @@ import java.util.UUID;
 @AllArgsConstructor
 //recordda kullanılır ama setter da sıkıntı çıkıyor
 public class CreateModelRequest {
-    @NotBlank //boşluk bırakırsa kabul etmemesi için
+    //@NotBlank //boşluk bırakırsa kabul etmemesi için
     @NotNull
     private UUID brandId;
     @NotBlank

@@ -1,5 +1,6 @@
 package com.kodlamaio.inventoryservice.business.concretes;
 
+import com.kodlamaio.commonpackage.utils.mappers.ModelMapperService;
 import com.kodlamaio.inventoryservice.business.abstracts.BrandService;
 import com.kodlamaio.inventoryservice.business.dto.requests.create.CreateBrandRequest;
 import com.kodlamaio.inventoryservice.business.dto.requests.update.UpdateBrandRequest;
@@ -7,6 +8,8 @@ import com.kodlamaio.inventoryservice.business.dto.responses.create.CreateBrandR
 import com.kodlamaio.inventoryservice.business.dto.responses.get.GetAllBrandsResponse;
 import com.kodlamaio.inventoryservice.business.dto.responses.get.GetBrandResponse;
 import com.kodlamaio.inventoryservice.business.dto.responses.update.UpdateBrandResponse;
+import com.kodlamaio.inventoryservice.entities.Brand;
+import com.kodlamaio.inventoryservice.repository.BrandRepository;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -17,31 +20,44 @@ import java.util.UUID;
 @Service
 @AllArgsConstructor
 public class BrandManager implements BrandService {
-    //TODO: update methods
-    private final ModelMapper mapper;
+
+    private final ModelMapperService mapper;
+    private final BrandRepository repository;
 
     @Override
     public List<GetAllBrandsResponse> getAll() {
-        return null;
+        List<Brand> brands = repository.findAll();
+        List<GetAllBrandsResponse> response = brands.stream()
+                .map(brand -> mapper.forResponse().map(brand, GetAllBrandsResponse.class)).toList();
+        return response;
     }
 
     @Override
     public GetBrandResponse getById(UUID id) {
-        return null;
-    }
+        //rules.checkIfBrandExists(id);
+        Brand brand = repository.findById(id).orElseThrow();
+        return mapper.forResponse().map(brand, GetBrandResponse.class);    }
 
     @Override
     public CreateBrandResponse add(CreateBrandRequest request) {
-        return null;
+        //rules.checkIfBrandExistsByName(request.getName());
+        Brand brandSave = mapper.forRequest().map(request, Brand.class);
+        brandSave.setId(null);
+        repository.save(brandSave);
+        return mapper.forResponse().map(brandSave, CreateBrandResponse.class);
     }
 
     @Override
     public UpdateBrandResponse update(UUID id, UpdateBrandRequest request) {
-        return null;
+        Brand updateBrand = mapper.forRequest().map(request, Brand.class);
+        updateBrand.setId(id);
+        repository.save(updateBrand);
+        return mapper.forResponse().map(updateBrand, UpdateBrandResponse.class);
     }
 
     @Override
     public void delete(UUID id) {
-
+        //rules.checkIfBrandExists(id);
+        repository.deleteById(id);
     }
 }
