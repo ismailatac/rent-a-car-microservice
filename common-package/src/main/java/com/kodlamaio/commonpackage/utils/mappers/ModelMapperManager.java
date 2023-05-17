@@ -3,12 +3,11 @@ package com.kodlamaio.commonpackage.utils.mappers;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
-import org.springframework.stereotype.Service;
 
-@Service
 @AllArgsConstructor
-public class ModelMapperManager implements ModelMapperService{
+public class ModelMapperManager implements ModelMapperService {
     private ModelMapper mapper;
+
     @Override
     public ModelMapper forResponse() {
         mapper.getConfiguration()
@@ -26,5 +25,4 @@ public class ModelMapperManager implements ModelMapperService{
 
         return mapper;
     }
-
 }
