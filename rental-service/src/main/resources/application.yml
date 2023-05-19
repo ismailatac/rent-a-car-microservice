@@ -35,6 +35,6 @@ server:
 resilience4j:
   retry:
     instances:
-      rental-car-available:
-        max-attempts: 5
-        wait-duration: 10s
+      check-car-availabilty:
+        max-attempts: 10
+        wait-duration: 5s
