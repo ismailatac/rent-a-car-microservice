@@ -9,7 +9,6 @@ import com.kodlamaio.inventoryservice.business.dto.responses.create.CreateBrandR
 import com.kodlamaio.inventoryservice.business.dto.responses.get.GetAllBrandsResponse;
 import com.kodlamaio.inventoryservice.business.dto.responses.get.GetBrandResponse;
 import com.kodlamaio.inventoryservice.business.dto.responses.update.UpdateBrandResponse;
-import com.kodlamaio.inventoryservice.business.kafka.producer.InventoryProducer;
 import com.kodlamaio.inventoryservice.entities.Brand;
 import com.kodlamaio.inventoryservice.repository.BrandRepository;
 import lombok.AllArgsConstructor;
