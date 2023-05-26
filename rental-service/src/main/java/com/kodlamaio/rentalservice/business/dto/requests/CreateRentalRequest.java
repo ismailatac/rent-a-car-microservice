@@ -1,5 +1,6 @@
 package com.kodlamaio.rentalservice.business.dto.requests;
 
+import com.kodlamaio.commonpackage.utils.dto.PaymentRequest;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,4 +19,5 @@ public class CreateRentalRequest {
     private double totalPrice;
     private int rentedForDays;
     private LocalDate rentedAt;
+    private PaymentRequest paymentRequest;
 }

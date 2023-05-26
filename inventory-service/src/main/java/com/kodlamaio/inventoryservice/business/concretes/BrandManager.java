@@ -1,6 +1,7 @@
 package com.kodlamaio.inventoryservice.business.concretes;
 
 import com.kodlamaio.commonpackage.events.inventory.BrandDeletedEvent;
+import com.kodlamaio.commonpackage.kafka.producer.KafkaProducer;
 import com.kodlamaio.commonpackage.utils.mappers.ModelMapperService;
 import com.kodlamaio.inventoryservice.business.abstracts.BrandService;
 import com.kodlamaio.inventoryservice.business.dto.requests.create.CreateBrandRequest;
@@ -23,7 +24,7 @@ public class BrandManager implements BrandService {
 
     private final ModelMapperService mapper;
     private final BrandRepository repository;
-    private final InventoryProducer inventoryProducer;
+    private final KafkaProducer inventoryProducer;
 
     @Override
     public List<GetAllBrandsResponse> getAll() {
