@@ -38,7 +38,8 @@ public class BrandManager implements BrandService {
     public GetBrandResponse getById(UUID id) {
         //rules.checkIfBrandExists(id);
         Brand brand = repository.findById(id).orElseThrow();
-        return mapper.forResponse().map(brand, GetBrandResponse.class);    }
+        return mapper.forResponse().map(brand, GetBrandResponse.class);
+    }
 
     @Override
     public CreateBrandResponse add(CreateBrandRequest request) {
@@ -63,7 +64,8 @@ public class BrandManager implements BrandService {
         repository.deleteById(id);
         sendKafkaBrandDeletedEvent(id);
     }
+
     private void sendKafkaBrandDeletedEvent(UUID id) {
-        inventoryProducer.sendMessage(new BrandDeletedEvent(id));
+        inventoryProducer.sendMessage(new BrandDeletedEvent(id), "brand-deleted");
     }
 }

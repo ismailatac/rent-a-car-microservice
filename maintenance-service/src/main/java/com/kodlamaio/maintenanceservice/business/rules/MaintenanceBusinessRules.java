@@ -31,6 +31,11 @@ public class MaintenanceBusinessRules {
         if (!response.isSuccess()) {
             throw new BusinessException(response.getMessage());
         }
+    }
 
+    public void checkIfCarIsNotUnderMaintenance(UUID carId) {
+        if (!repository.existsByCarIdAndIsCompletedIsFalse(carId)) {
+            throw new BusinessException("CAR_IS_NOT_UNDER_MAINTENANCE");
+        }
     }
 }
