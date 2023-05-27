@@ -6,7 +6,7 @@ spring:
       server:
         default-label: master
         git:
-          uri: https://github.com/kalayciburak-instruction/config-server-t2
+          uri: https://github.com/ismailatac/config-server
   profiles:
     active: dev
 server:

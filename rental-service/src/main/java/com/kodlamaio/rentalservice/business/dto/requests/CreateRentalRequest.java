@@ -6,7 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDate;
 import java.util.UUID;
 
 @Getter
@@ -16,8 +15,6 @@ import java.util.UUID;
 public class CreateRentalRequest {
     private UUID carId;
     private double dailyPrice;
-    private double totalPrice;
     private int rentedForDays;
-    private LocalDate rentedAt;
     private PaymentRequest paymentRequest;
 }

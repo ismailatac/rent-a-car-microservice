@@ -15,7 +15,7 @@ public class GetCarResponse {
     private UUID id;
     private UUID modelId;
 
-    private String modelYear;
+    private int modelYear;
 
     private String plate;
 

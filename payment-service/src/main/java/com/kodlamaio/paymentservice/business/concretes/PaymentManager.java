@@ -88,6 +88,8 @@ public class PaymentManager implements PaymentService {
             payment.setBalance(payment.getBalance() - request.getPrice());
             repository.save(payment);
             response.setSuccess(true);
+
+
         } catch (BusinessException exception) {
             response.setSuccess(false);
             response.setMessage(exception.getMessage());
@@ -95,6 +97,7 @@ public class PaymentManager implements PaymentService {
 
         return response;
     }
+
 }
 
 

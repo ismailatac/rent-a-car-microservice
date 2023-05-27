@@ -48,18 +48,20 @@ services:
       - paymentdb_data:/data/db
 
   invoicedb:
-    container_name: invoicedb-t2
-    image: mysql
+    container_name: turkcell2-invoicedb
+    image: mongo
     ports:
-      - "3307:3307"
-    environment:
-      - MYSQL_ROOT_PASSWORD=12345
-      - MYSQL_TCP_PORT=3307
-      - VIRTUAL_PORT=3307
+      - "27018:27018"
+    #    environment:
+    #      MONGO_INITDB_ROOT_USERNAME: "turkcell"
+    #      MONGO_INITDB_ROOT_PASSWORD: "12345"
+
     volumes:
       - invoicedb_data:/data/db
+  #      - "/data/db/"
 volumes:
   kafka_data:
   mongodb_data:
   maintenancedb_data:
   paymentdb_data:
+  invoicedb_data:

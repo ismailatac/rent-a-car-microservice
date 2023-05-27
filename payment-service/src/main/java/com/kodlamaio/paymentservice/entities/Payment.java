@@ -1,6 +1,9 @@
 package com.kodlamaio.paymentservice.entities;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,7 +16,6 @@ import java.util.UUID;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "payments")
 public class Payment {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -25,3 +27,5 @@ public class Payment {
     private String cardCvv;
     private double balance;
 }
+
+

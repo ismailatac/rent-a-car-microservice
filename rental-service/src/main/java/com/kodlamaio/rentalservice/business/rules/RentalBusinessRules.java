@@ -6,6 +6,7 @@ import com.kodlamaio.rentalservice.api.clients.CarClient;
 import com.kodlamaio.rentalservice.api.clients.PaymentClient;
 import com.kodlamaio.rentalservice.repository.RentalRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -14,7 +15,10 @@ import java.util.UUID;
 @AllArgsConstructor
 public class RentalBusinessRules {
     private final RentalRepository repository;
+
+    @Qualifier("com.kodlamaio.rentalservice.api.clients.CarClient")
     private final CarClient carClient;
+    @Qualifier("com.kodlamaio.rentalservice.api.clients.PaymentClient")
     private final PaymentClient paymentClient;
 
     public void checkIfRentalExists(UUID id) {
@@ -32,7 +36,10 @@ public class RentalBusinessRules {
 
     public void processRentalPayment(CreateRentalPaymentRequest request) {
         var response = paymentClient.processRentalPayment(request);
+
         if (!response.isSuccess()) {
             throw new BusinessException(response.getMessage());
         }
+
+    }
 }
