@@ -6,7 +6,7 @@ spring:
       server:
         default-label: master
         git:
-          uri: https://github.com/ismailatac/config-server
+          uri: https://github.com/ismailatac/config-server-rent-a-car
   profiles:
     active: dev
 server:
